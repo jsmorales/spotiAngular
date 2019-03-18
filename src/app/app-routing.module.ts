@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component';
+import { CategoryComponent } from './components/category/category.component';
+import {PlaylistComponent} from './components/playlist/playlist.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'home', component: HomeComponent},
+  { path: 'search', component: SearchComponent},
+  { path: 'category/:idCategory', component: CategoryComponent},
+  { path: 'playlist/:idPlaylist', component: PlaylistComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'home'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

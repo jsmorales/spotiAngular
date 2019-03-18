@@ -1,0 +1,44 @@
+
+
+<p *ngIf="loading"> Loading ... <span class="fa fa-sync fa-spin"></span></p>
+
+<div class="row mt-5">
+  <div class="col-4">
+    <img class="mb-2" [src]="playlist.images[0].url">
+    <p>{{playlist.name}}</p>
+    <p>{{playlist.description}}</p>
+  </div>
+  <div class="col-8">
+
+    <ul class="list-group">
+      <li class="list-group-item text-dark" *ngFor="let track of tracks">
+        <p>Name: {{track.track.name}}</p>
+        <p>Album: {{track.track.album.name}}</p>
+        <p>Artist: {{track.track.artists[0].name}}</p>
+      </li>
+    </ul>
+
+  </div>
+</div>
+<!--<div *ngIf="playlists.length == 0" class="alert alert-warning mt-5" role="alert">
+  No hay listas de reproducción para esta categoría.
+</div>
+
+<div class="row">
+
+  <div *ngFor="let playlist of playlists">
+
+    <div class="col-12 offset-4 mt-4 mb-2">
+
+      <div class="card">
+        <img [src]="playlist.images[0].url" class="card-img-top" [alt]="playlist.id" width="500">
+        <div class="card-body text-center">
+          <a [href]="['/playlist/' + playlist.id]">{{playlist.name}}</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>-->
