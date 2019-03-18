@@ -1,3 +1,19 @@
-<p>
-  artist works!
-</p>
+<p *ngIf="loading"> Loading ... <span class="fa fa-sync fa-spin"></span></p>
+
+<div *ngIf="!loading" class="row mt-5">
+  <div class="col-6">
+    <img class="mb-2" [src]="artist | imageValidator:'images':0" width="400">
+    <p>{{artist.name}}</p>
+    <p>Followers: {{artist.followers.total | number}}</p>
+    <p>Popularidad: {{artist.popularity | number}}</p>
+  </div>
+  <div class="col-6">
+    <h4 class="text-center">Genres</h4>
+    <ul class="list-group">
+      <li class="list-group-item text-dark" *ngFor="let genre of artist.genres">
+        <p>{{genre}}</p>
+      </li>
+    </ul>
+
+  </div>
+</div>

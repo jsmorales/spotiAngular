@@ -41,4 +41,9 @@ export class SpotifyService {
     return this.getObservableQuery('/search?q=' + term + '&type=artist')
       .pipe( map( (data: any) => data.artists.items ) );
   }
+
+  getArtist(idArtist: string) {
+    return this.getObservableQuery('/artists/' + idArtist)
+      .pipe( map( (data: any) => data ) );
+  }
 }
