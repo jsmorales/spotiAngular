@@ -26,7 +26,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   getPlaylist() {
-    this.spotiService.getPlaylist(localStorage.getItem('tokenSpoty'), this.idPlaylist).subscribe(data => {
+    this.spotiService.getPlaylist(this.idPlaylist).subscribe(data => {
       console.log(data);
       this.playlist = data;
       this.tracks = this.playlist.tracks.items;

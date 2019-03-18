@@ -10,52 +10,35 @@ export class SpotifyService {
   constructor(private http: HttpClient) {
   }
 
-  getCategories(token: string) {
+  getObservableQuery(query: string) {
     const body: any = {
       grant_type: 'client_credentials',
     };
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + localStorage.getItem('tokenSpoty')
     });
-    return this.http.get(this.URL_BASE + '/browse/categories', {headers})
+
+    return this.http.get(this.URL_BASE + query, {headers});
+  }
+
+  getCategories() {
+    return this.getObservableQuery('/browse/categories')
       .pipe( map( (data: any) =>  data.categories.items ) );
       // this pipe method helps format the result on this case through the map method.
   }
 
-  getCategory(token: string, idCategory: string) {
-    const body: any = {
-      grant_type: 'client_credentials',
-    };
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
-    });
-    return this.http.get(this.URL_BASE + '/browse/categories/' + idCategory + '/playlists', {headers});
+  getCategory(idCategory: string) {
+    return this.getObservableQuery('/browse/categories/' + idCategory + '/playlists')
+      .pipe( map( (data: any) =>  data.playlists.items ) );
   }
 
-  getPlaylist(token: string, idPlaylist: string) {
-    const body: any = {
-      grant_type: 'client_credentials',
-    };
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
-    });
-    return this.http.get(this.URL_BASE + '/playlists/' + idPlaylist, {headers});
+  getPlaylist(idPlaylist: string) {
+    return this.getObservableQuery('/playlists/' + idPlaylist);
   }
 
-  searchArtist(token: string, term: string) {
-    const body: any = {
-      grant_type: 'client_credentials',
-      q: term,
-      type: 'artist'
-    };
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token
-    });
-    return this.http.get(this.URL_BASE + '/search?q=' + term + '&type=artist', {headers})
+  searchArtist(term: string) {
+    return this.getObservableQuery('/search?q=' + term + '&type=artist')
       .pipe( map( (data: any) => data.artists.items ) );
   }
 }

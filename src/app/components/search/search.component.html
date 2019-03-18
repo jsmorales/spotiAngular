@@ -9,21 +9,4 @@
 
 <p *ngIf="loading"> Loading ... <span class="fa fa-sync fa-spin"></span></p>
 
-<div class="row">
-
-  <div *ngFor="let artist of artists">
-
-    <div class="col-12 offset-4 mt-4 mb-2">
-
-      <div class="card">
-        <img [src]="artist.images[1].url" class="" [alt]="artist.id" width="300">
-        <div class="card-body text-center">
-          <a [href]="['/artist/' + artist.id]">{{artist.name}}</a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
+<app-render-cards [items]="artists" [endPointLocalName]="'artist'" [imageNameProperty]="'images'"></app-render-cards>

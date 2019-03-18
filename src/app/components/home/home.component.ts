@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCategories() {
-    this.spotifyService.getCategories(this.getItem()).subscribe((data: any) => {
+    this.spotifyService.getCategories().subscribe((data: any) => {
       console.log(data);
       this.categories = data;
       this.loading = false;

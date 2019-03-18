@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
     if ( term !== '') {
       this.loading = true;
       console.log('searching term ' + term);
-      this.servSpoty.searchArtist(localStorage.getItem('tokenSpoty'), term).subscribe( (data: any) => {
+      this.servSpoty.searchArtist(term).subscribe( (data: any) => {
         console.log(data);
         this.artists = data;
         this.loading = false;

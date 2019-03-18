@@ -24,10 +24,9 @@ export class CategoryComponent implements OnInit {
   }
 
   getCategory() {
-    this.spotiService.getCategory(localStorage.getItem('tokenSpoty'), this.idCategory).subscribe(data => {
+    this.spotiService.getCategory(this.idCategory).subscribe(data => {
       console.log(data);
-      const dataRes: any = data;
-      this.playlists = dataRes.playlists.items;
+      this.playlists = data;
       this.loading = false;
     });
   }
