@@ -2,14 +2,17 @@
 
 <p *ngIf="loading"> Loading ... <span class="fa fa-sync fa-spin"></span></p>
 
-<div class="row mt-5">
+<div *ngIf="!loading" class="row mt-5">
   <div class="col-4">
     <img class="mb-2" [src]="playlist | imageValidator:'images':0">
     <p>{{playlist.name}}</p>
     <p>{{playlist.description}}</p>
   </div>
-  <div class="col-8">
-
+  <div class="col-4">
+    <iframe [src]="'https://open.spotify.com/embed/playlist/' | domseguro:playlist.id" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+  <div class="col-4 text-center" style="overflow-y: auto; height: 400px;">
+    <h5>Paylist Info</h5>
     <ul class="list-group">
       <li class="list-group-item text-dark" *ngFor="let track of tracks">
         <p>Name: {{track.track.name}}</p>
@@ -17,6 +20,5 @@
         <p>Artist: <a [href]="['/artist/' + track.track.artists[0].id]">{{track.track.artists[0].name}}</a></p>
       </li>
     </ul>
-
   </div>
 </div>

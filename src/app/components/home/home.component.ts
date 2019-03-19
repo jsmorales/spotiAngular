@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   public token: string;
   public categories: any;
   public loading = true;
+  public errorUi = false;
+  public errorMessage = '';
 
   constructor(private spotifyService: SpotifyService) { }
 
@@ -23,6 +25,11 @@ export class HomeComponent implements OnInit {
       console.log(data);
       this.categories = data;
       this.loading = false;
+      this.errorUi = false;
+    }, (error) => {
+      this.errorUi = true;
+      this.loading = false;
+      this.errorMessage = error.error.error.message;
     });
   }
 

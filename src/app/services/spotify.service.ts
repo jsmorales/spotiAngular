@@ -46,4 +46,9 @@ export class SpotifyService {
     return this.getObservableQuery('/artists/' + idArtist)
       .pipe( map( (data: any) => data ) );
   }
+
+  getArtistTopTracks(idArtist: string) {
+    return this.getObservableQuery('/artists/' + idArtist + '/top-tracks?country=ES')
+      .pipe( map( (data: any) => data.tracks ) );
+  }
 }

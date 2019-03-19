@@ -16,6 +16,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { ImageValidatorPipe } from './pipes/image-validator.pipe';
 import { RenderCardsComponent } from './components/render-cards/render-cards.component';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RenderCardsComponent } from './components/render-cards/render-cards.com
     CategoryComponent,
     PlaylistComponent,
     ImageValidatorPipe,
-    RenderCardsComponent
+    RenderCardsComponent,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
